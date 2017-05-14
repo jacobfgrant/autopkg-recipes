@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+    <key>Description</key>
+    <string>Downloads the latest Synology Hyper Backup Explorer DMG.</string>
+    <key>Identifier</key>
+    <string>com.github.jacobfgrant.download.SynologyHyperBackupExplorer</string>
+    <key>Input</key>
+    <dict>
+        <key>NAME</key>
+        <string>SynologyHyperBackupExplorer</string>
+    </dict>
+    <key>MinimumVersion</key>
+    <string>0.4.0</string>
+    <key>Process</key>
+    <array>
+        <dict>
+            <key>Arguments</key>
+            <dict>
+                <key>re_pattern</key>
+                <string>Version: ([1-9]+\.[0-9]+\.?[0-9]*)-[0-9]{4}</string>
+                <key>result_output_var_name</key>
+                <string>major_version</string>
+                <key>url</key>
+                <string>https://www.synology.com/en-us/releaseNote/HyperBackupExplorer</string>
+            </dict>
+            <key>Processor</key>
+            <string>URLTextSearcher</string>
+        </dict>
+        <dict>
+            <key>Arguments</key>
+            <dict>
+                <key>re_pattern</key>
+                <string>Version: [1-9]+\.[0-9]+\.?[0-9]*-([0-9]{4})</string>
+                <key>result_output_var_name</key>
+                <string>minor_version</string>
+                <key>url</key>
+                <string>https://www.synology.com/en-us/releaseNote/HyperBackupExplorer</string>
+            </dict>
+            <key>Processor</key>
+            <string>URLTextSearcher</string>
+        </dict>
+        <dict>
+            <key>Processor</key>
+            <string>URLDownloader</string>
+            <key>Arguments</key>
+            <dict>
+                <key>url</key>
+                <string>https://global.download.synology.com/download/Tools/HyperBackupExplorer/%major_version%-%minor_version%/Mac/x86_64/HyperBackupExplorer-%major_version%-%minor_version%-mac.zip</string>
+                <key>filename</key>
+                <string>%NAME%.zip</string>
+            </dict>
+        </dict>
+        <dict>
+            <key>Processor</key>
+            <string>EndOfCheckPhase</string>
+        </dict>
+    </array>
+</dict>
+</plist>
