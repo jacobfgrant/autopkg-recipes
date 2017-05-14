@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+    <key>Description</key>
+    <string>Downloads the latest Synology Cloud Station Drive DMG and imports it into Munki.</string>
+    <key>Identifier</key>
+    <string>com.github.jacobfgrant.munki.SynologyCloudStationDrive</string>
+    <key>Input</key>
+    <dict>
+        <key>NAME</key>
+        <string>SynologyCloudStationDrive</string>
+        <key>MUNKI_REPO_SUBDIR</key>
+        <string>apps/system/synologycloudstationdrive</string>
+        <key>pkginfo</key>
+        <dict>
+            <key>catalogs</key>
+            <array>
+                <string>testing</string>
+            </array>
+            <key>description</key>
+            <string>Cloud Station Drive is an application which sync files between your computers and Synology NAS via the Internet, so that your data and documents are always up-to-date and stay beside you. Even without an Internet connection, you can still view or edit your files within the specific folder offline, and all the changes will be automatically synced to your Synology NAS and other computers when the Internet connection is restored.</string>
+            <key>display_name</key>
+            <string>Synology Cloud Station Drive</string>
+            <key>name</key>
+            <string>%NAME%</string>
+            <key>unattended_install</key>
+            <true/>
+        </dict>
+    </dict>
+    <key>MinimumVersion</key>
+    <string>0.4.0</string>
+    <key>ParentRecipe</key>
+    <string>com.github.jacobfgrant.download.SynologyCloudStationDrive</string>
+    <key>Process</key>
+    <array>
+        <dict>
+            <key>Arguments</key>
+            <dict>
+                <key>pkg_path</key>
+                <string>%pathname%</string>
+                <key>repo_subdirectory</key>
+                <string>%MUNKI_REPO_SUBDIR%</string>
+            </dict>
+            <key>Processor</key>
+            <string>MunkiImporter</string>
+        </dict>
+    </array>
+</dict>
+</plist>

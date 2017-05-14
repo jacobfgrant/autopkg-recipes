@@ -1,0 +1,76 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+    <key>Description</key>
+    <string>Downloads the latest Synology Cloud Station Drive DMG.</string>
+    <key>Identifier</key>
+    <string>com.github.jacobfgrant.download.SynologyCloudStationDrive</string>
+    <key>Input</key>
+    <dict>
+        <key>NAME</key>
+        <string>SynologyCloudStationDrive</string>
+    </dict>
+    <key>MinimumVersion</key>
+    <string>0.4.0</string>
+    <key>Process</key>
+    <array>
+        <dict>
+            <key>Arguments</key>
+            <dict>
+                <key>re_pattern</key>
+                <string>Version: ([1-9]+\.[0-9]+\.?[0-9]*)-[0-9]{4}</string>
+                <key>result_output_var_name</key>
+                <string>major_version</string>
+                <key>url</key>
+                <string>https://www.synology.com/en-us/releaseNote/CloudStationDrive</string>
+            </dict>
+            <key>Processor</key>
+            <string>URLTextSearcher</string>
+        </dict>
+        <dict>
+            <key>Arguments</key>
+            <dict>
+                <key>re_pattern</key>
+                <string>Version: [1-9]+\.[0-9]+\.?[0-9]*-([0-9]{4})</string>
+                <key>result_output_var_name</key>
+                <string>minor_version</string>
+                <key>url</key>
+                <string>https://www.synology.com/en-us/releaseNote/CloudStationDrive</string>
+            </dict>
+            <key>Processor</key>
+            <string>URLTextSearcher</string>
+        </dict>
+        <dict>
+            <key>Processor</key>
+            <string>URLDownloader</string>
+            <key>Arguments</key>
+            <dict>
+                <key>url</key>
+                <string>https://global.download.synology.com/download/Tools/CloudStationDrive/%major_version%-%minor_version%/Mac/Installer/synology-cloud-station-drive-%minor_version%.dmg</string>
+                <key>filename</key>
+                <string>%NAME%.dmg</string>
+            </dict>
+        </dict>
+        <dict>
+            <key>Processor</key>
+            <string>EndOfCheckPhase</string>
+        </dict>
+        <dict>
+            <key>Processor</key>
+            <string>CodeSignatureVerifier</string>
+            <key>Arguments</key>
+            <dict>
+                <key>input_path</key>
+                <string>%pathname%/Install Cloud Station Drive.pkg</string>
+                <key>expected_authority_names</key>
+                <array>
+                    <string>Developer ID Installer: Synology Inc. (X85BAK35Y4)</string>
+                    <string>Developer ID Certification Authority</string>
+                    <string>Apple Root CA</string>
+                </array>
+            </dict>
+        </dict>
+    </array>
+</dict>
+</plist>
