@@ -8,10 +8,10 @@
     <string>com.github.jacobfgrant.munki.SynologyCloudStationDrive</string>
     <key>Input</key>
     <dict>
+        <key>MUNKI_REPO_SUBDIR</key>
+        <string>apps/synology</string>
         <key>NAME</key>
         <string>SynologyCloudStationDrive</string>
-        <key>MUNKI_REPO_SUBDIR</key>
-        <string>apps/system/synologycloudstationdrive</string>
         <key>pkginfo</key>
         <dict>
             <key>catalogs</key>
@@ -20,8 +20,10 @@
             </array>
             <key>description</key>
             <string>Cloud Station Drive is an application which sync files between your computers and Synology NAS via the Internet, so that your data and documents are always up-to-date and stay beside you. Even without an Internet connection, you can still view or edit your files within the specific folder offline, and all the changes will be automatically synced to your Synology NAS and other computers when the Internet connection is restored.</string>
+            <key>developer</key>
+            <string>Synology</string>
             <key>display_name</key>
-            <string>Synology Cloud Station Drive</string>
+            <string>Cloud Station Drive</string>
             <key>name</key>
             <string>%NAME%</string>
             <key>unattended_install</key>

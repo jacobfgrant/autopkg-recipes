@@ -20,7 +20,11 @@
                 <string>testing</string>
             </array>
             <key>description</key>
-            <string>Automatically process packages and scripts at logout</string>
+            <string>Automatically process packages and scripts at logout.</string>
+            <key>developer</key>
+            <string>aysiu</string>
+            <key>display_name</key>
+            <string>Offset</string>
             <key>name</key>
             <string>%NAME%</string>
             <key>unattended_install</key>

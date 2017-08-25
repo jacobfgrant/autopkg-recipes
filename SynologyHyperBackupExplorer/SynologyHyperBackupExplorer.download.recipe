@@ -3,7 +3,7 @@
 <plist version="1.0">
 <dict>
     <key>Description</key>
-    <string>Downloads the latest Synology Hyper Backup Explorer DMG.</string>
+    <string>Downloads the latest Synology Hyper Backup Explorer app.</string>
     <key>Identifier</key>
     <string>com.github.jacobfgrant.download.SynologyHyperBackupExplorer</string>
     <key>Input</key>

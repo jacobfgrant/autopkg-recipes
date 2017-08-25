@@ -8,10 +8,10 @@
     <string>com.github.jacobfgrant.munki.SynologyCloudStationBackup</string>
     <key>Input</key>
     <dict>
+        <key>MUNKI_REPO_SUBDIR</key>
+        <string>apps/synology</string>
         <key>NAME</key>
         <string>SynologyCloudStationBackup</string>
-        <key>MUNKI_REPO_SUBDIR</key>
-        <string>apps/Synology</string>
         <key>pkginfo</key>
         <dict>
             <key>catalogs</key>
@@ -20,8 +20,10 @@
             </array>
             <key>description</key>
             <string>Cloud Station Backup is a backup service that allows you to back up your files from multiple client computers to a centralized Synology NAS.</string>
+            <key>developer</key>
+            <string>Synology</string>
             <key>display_name</key>
-            <string>Synology Cloud Station Backup</string>
+            <string>Cloud Station Backup</string>
             <key>name</key>
             <string>%NAME%</string>
             <key>unattended_install</key>
