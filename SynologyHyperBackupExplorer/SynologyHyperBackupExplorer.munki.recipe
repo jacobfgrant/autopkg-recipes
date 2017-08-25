@@ -63,6 +63,31 @@
         <dict>
             <key>Arguments</key>
             <dict>
+                <key>re_pattern</key>
+                <string>Version: ([1-9]+\.[0-9]+\.?[0-9]*)-[0-9]{4}</string>
+                <key>result_output_var_name</key>
+                <string>app_major_version</string>
+                <key>url</key>
+                <string>https://www.synology.com/en-us/releaseNote/HyperBackupExplorer</string>
+            </dict>
+            <key>Processor</key>
+            <string>URLTextSearcher</string>
+        </dict>
+        <dict>
+            <key>Processor</key>
+            <string>MunkiPkginfoMerger</string>
+            <key>Arguments</key>
+            <dict>
+                <key>additional_pkginfo</key>
+                <dict>
+                    <key>version</key>
+                    <string>%app_major_version%</string>
+                </dict>
+            </dict>
+        </dict>
+        <dict>
+            <key>Arguments</key>
+            <dict>
                 <key>pkg_path</key>
                 <string>%dmg_path%</string>
                 <key>repo_subdirectory</key>
